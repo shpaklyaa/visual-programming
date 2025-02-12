@@ -1,0 +1,62 @@
+.body {
+    margin: 0;
+}
+
+.header-center {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+.header {
+    background-color: rgb(27, 84, 221);
+    width: 600px;
+    height: 861px;
+    display: grid;
+    place-items: center;
+    grid-template-rows: 55.4px 88px 270px 87px 85px 41px;
+    grid-auto-flow: row;
+    /* flex-wrap: wrap; */
+}
+
+.wisp {
+    display: flexbox;
+    color: fff;
+    text-align: center;
+    width: 100px;
+    height: 55.4px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.persian-kitten {
+    display: flexbox;
+    color: fff;
+}
+
+.persian-kitten-image {
+    display: flexbox;
+    height: 270px;
+    width: 480px;
+}
+
+.persian-kitten-fact {
+    color: fff;
+    display: flexbox;
+    text-align: center;
+
+}
+
+.desc {
+    display: flexbox;
+    text-align: center;
+    color: fff;
+    height: 85px;
+    width: 480px;
+}
+
+.footer {
+    background-color: aqua;
+    text-align: center;
+    width: 100%;
+    bottom: 0;
+}
