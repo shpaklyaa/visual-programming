@@ -14,36 +14,53 @@
     height: 861px;
     display: grid;
     place-items: center;
+    text-align: center;
     grid-template-rows: 55.4px 88px 270px 87px 85px 41px;
     grid-auto-flow: row;
-    /* flex-wrap: wrap; */
+    /* grid-template-rows: auto; */
+    row-gap: 32px;
+    padding-top: 32px;
+}
+
+.wisp-container {
+    margin-bottom: 10.56px; /* Добавляем дополнительный отступ */
 }
 
 .wisp {
     display: flexbox;
     color: fff;
-    text-align: center;
     width: 100px;
     height: 55.4px;
+    font-size: 31.58px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .persian-kitten {
     display: flexbox;
     color: fff;
+    font-family: Inter;
+    font-size: 36px;
+    /* margin-top: 130px; */
+    width: 480px;
+    height: 88px;
 }
 
 .persian-kitten-image {
     display: flexbox;
     height: 270px;
     width: 480px;
+    /* margin-top: 250px; */
 }
 
 .persian-kitten-fact {
     color: fff;
     display: flexbox;
     text-align: center;
-
+    font-family: Inter;
+    font-size: 24px;
+    width: 480px;
+    height: 87px;
+    /* margin-top: 552px; */
 }
 
 .desc {
@@ -52,6 +69,23 @@
     color: fff;
     height: 85px;
     width: 480px;
+    font-family: Inter;
+    font-size: 14px;
+    /* margin-top: 671px; */
+}
+
+.cta-box {
+    display: flexbox;
+    background-color: fff;
+    height: 41px;
+    width: 110px;
+    /* text-align: center;
+    justify-content: center;
+    align-items: center; */
+}
+
+.cta-link {
+    color: black;   
 }
 
 .footer {
