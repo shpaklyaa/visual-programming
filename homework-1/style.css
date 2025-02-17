@@ -1,96 +1,158 @@
-.body {
-    margin: 0;
-}
+    .body {
+        margin: 0;
+    }
 
-.header-center {
-    display: flex;
-    justify-content: center; 
-    align-items: center;
-}
+    .header-center {
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+    }
 
-.header {
-    background-color: rgb(27, 84, 221);
-    width: 600px;
-    height: 861px;
-    display: grid;
-    place-items: center;
-    text-align: center;
-    grid-template-rows: 55.4px 88px 270px 87px 85px 41px;
-    grid-auto-flow: row;
-    /* grid-template-rows: auto; */
-    row-gap: 32px;
-    padding-top: 32px;
-}
+    .header {
+        background-color: rgb(27, 84, 221);
+        width: 600px;
+        height: 861px;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        grid-template-rows: 55.4px 88px 270px 87px 85px 41px;
+        grid-auto-flow: row;
+        /* grid-template-rows: auto; */
+        row-gap: 32px;
+        padding-top: 32px;
+    }
 
-.wisp-container {
-    margin-bottom: 10.56px; /* Добавляем дополнительный отступ */
-}
+    .wisp-container {
+        margin-bottom: 10.56px; /* Добавляем дополнительный отступ */
+    }
 
-.wisp {
-    display: flexbox;
-    color: fff;
-    width: 100px;
-    height: 55.4px;
-    font-size: 31.58px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
+    .wisp {
+        display: flexbox;
+        color: fff;
+        width: 100px;
+        height: 55.4px;
+        font-size: 31.58px;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
 
-.persian-kitten {
-    display: flexbox;
-    color: fff;
-    font-family: Inter;
-    font-size: 36px;
-    /* margin-top: 130px; */
-    width: 480px;
-    height: 88px;
-}
+    .persian-kitten {
+        display: flexbox;
+        color: fff;
+        font-family: Inter;
+        font-size: 36px;
+        /* margin-top: 130px; */
+        width: 480px;
+        height: 88px;
+    }
 
-.persian-kitten-image {
-    display: flexbox;
-    height: 270px;
-    width: 480px;
-    /* margin-top: 250px; */
-}
+    .persian-kitten-image {
+        display: flexbox;
+        height: 270px;
+        width: 480px;
+        /* margin-top: 250px; */
+    }
 
-.persian-kitten-fact {
-    color: fff;
-    display: flexbox;
-    text-align: center;
-    font-family: Inter;
-    font-size: 24px;
-    width: 480px;
-    height: 87px;
-    /* margin-top: 552px; */
-}
+    .persian-kitten-fact {
+        color: fff;
+        display: flexbox;
+        text-align: center;
+        font-family: Inter;
+        font-size: 24px;
+        width: 480px;
+        height: 87px;
+        /* margin-top: 552px; */
+    }
 
-.desc {
-    display: flexbox;
-    text-align: center;
-    color: fff;
-    height: 85px;
-    width: 480px;
-    font-family: Inter;
-    font-size: 14px;
-    /* margin-top: 671px; */
-}
+    .desc {
+        display: flexbox;
+        text-align: center;
+        color: fff;
+        height: 85px;
+        width: 480px;
+        font-family: Inter;
+        font-size: 14px;
+        /* margin-top: 671px; */
+    }
 
-.cta-box {
-    display: flexbox;
-    background-color: fff;
-    height: 41px;
-    width: 110px;
-    /* text-align: center;
-    justify-content: center;
-    align-items: center; */
-}
+    .cta-button {
+        display: flexbox;
+        background-color: fff;
+        height: 41px;
+        width: 110px;
+        border-radius: 5px;
+        color: black; 
+        /* text-align: center;
+        justify-content: center;
+        align-items: center; */
+    }
 
-.cta-link {
-    color: black;   
-}
 
-.footer {
-    background-color: aqua;
-    text-align: center;
-    width: 100%;
-    bottom: 0;
-}
+    .main-center {
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+    }
+
+    .main {
+        width: 600px;
+        height: 921px;
+        background-color: aqua;
+        display: grid;
+        grid-template-rows: 240px 240px 240px 41px;
+        grid-auto-flow: row;
+        row-gap: 32px;
+        padding-top: 32px;
+    }
+
+    /* .main-flexbox {
+        display: flexbox;
+        justify-content: center;
+        align-items: center;
+    } */
+
+    .section-flexbox {
+        display: flexbox;
+        width: 480px;
+        height: 240px;
+    }
+
+    .frst-kitten {
+        display: flex;
+        width: 480px;
+        height: 240px;
+        align-items: center;
+    }
+
+    .scnd-kitten {
+        display: flex;
+        width: 480px;
+        height: 240px;
+        align-items: center;
+    }
+
+    .thrd-kitten {
+        display: flex;
+        width: 480px;
+        height: 240px;
+        align-items: center;
+    }
+
+    .kit-image {
+        width: 240px;
+        height: 240px;
+    }
+
+    /* .head-kittens {
+        display: flex;
+    }
+
+    .desc-kittens {
+        display: flex;
+    } */
+
+    .footer {
+        background-color: aqua;
+        text-align: center;
+        width: 100%;
+        bottom: 0;
+    }
