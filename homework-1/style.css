@@ -74,7 +74,7 @@
         /* margin-top: 671px; */
     }
 
-    .cta-button {
+    .cta-button-header {
         display: flexbox;
         background-color: fff;
         height: 41px;
@@ -96,24 +96,14 @@
     .main {
         width: 600px;
         height: 921px;
-        background-color: aqua;
+        background-color: fff;
         display: grid;
         grid-template-rows: 240px 240px 240px 41px;
         grid-auto-flow: row;
         row-gap: 32px;
         padding-top: 32px;
-    }
-
-    /* .main-flexbox {
-        display: flexbox;
-        justify-content: center;
+        justify-items: center;
         align-items: center;
-    } */
-
-    .section-flexbox {
-        display: flexbox;
-        width: 480px;
-        height: 240px;
     }
 
     .frst-kitten {
@@ -142,17 +132,51 @@
         height: 240px;
     }
 
-    /* .head-kittens {
+    /* .text-content {
+
+    } */
+
+    .title-kittens {
         display: flex;
+        padding-left: 32px;
+        font-family: Inter;
+        font-size: 24px;
     }
 
     .desc-kittens {
         display: flex;
-    } */
+        padding-left: 32px;
+        font-family: Inter;
+        font-size: 14px;
+    }
+
+    .link-kittens {
+        display: flex;
+        padding-left: 32px;
+        font-family: Inter;
+        font-size: 14px;
+    }
+
+    .cta-button-main {
+        display: flexbox;
+        background-color: rgb(27, 84, 221);
+        height: 41px;
+        width: 110px;
+        border-radius: 5px;
+        color: fff; 
+    }
+
+    .footer-center {
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+    }
 
     .footer {
-        background-color: aqua;
-        text-align: center;
-        width: 100%;
-        bottom: 0;
+        background-color: rgb(232, 232, 232);
+        display: grid;
+        width: 600px;
+        height: 181px;
+        justify-items: center;
+        align-items: center;
     }
