@@ -23,7 +23,7 @@
     }
 
     .wisp-container {
-        margin-bottom: 10.56px; /* Добавляем дополнительный отступ */
+        margin-bottom: 10.56px;
     }
 
     .wisp {
@@ -180,3 +180,168 @@
         justify-items: center;
         align-items: center;
     }
+
+    footer .icons {
+        margin-top: 26px;
+        width: 118px;
+        height: 18px;
+        list-style-type: none;
+    
+        display: flex;
+        flex-direction: row;
+        gap: 32px;
+    }
+    
+    .icons img{
+        width: 18px;
+        height: 18px;
+    }
+    
+    .url {
+        margin-top: 16px;
+        color: rgb(38, 38, 38);
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1px;
+    }
+    
+    .copyright {
+        margin-top: 8px;
+        color: rgb(38, 38, 38);
+        font-weight: 400;
+        font-size: 10px;
+        line-height: 16px;
+        text-align: center;
+    }
+    
+    .watermark {
+        margin-top: 16px;
+        margin-bottom: 26px;
+        width: 40px;
+        height: 22px;
+    }
+    
+    /* Медиазапрос для экранов шириной до 280px */
+    @media screen and (max-width: 280px) {
+    /* Общие настройки */
+    body {
+        font-size: 12px; /* Умеренный размер шрифта */
+        line-height: 1.4; /* Нормальный межстрочный интервал */
+    }
+
+    /* Адаптация header */
+    .header {
+        width: 100%; /* Занимает всю ширину экрана */
+        padding: 8px; /* Отступы для удобства просмотра */
+    }
+
+    .wisp-container {
+        text-align: center; /* Центрируем содержимое */
+    }
+
+    .wisp {
+        font-size: 16px; /* Умеренный заголовок */
+        margin-bottom: 8px; /* Отступ между элементами */
+    }
+
+    .persian-kitten {
+        font-size: 18px; /* Умеренный заголовок */
+        margin-bottom: 8px; /* Отступ между элементами */
+    }
+
+    .persian-kitten-image {
+        width: 100%; /* Изображение занимает всю ширину */
+        height: auto; /* Сохраняем пропорции */
+        max-height: 120px; /* Ограничиваем высоту изображения */
+        object-fit: cover; /* Обрезаем изображение, если нужно */
+    }
+
+    .persian-kitten-fact {
+        font-size: 12px; /* Текст среднего размера */
+        margin-bottom: 8px; /* Отступ между элементами */
+    }
+
+    .desc {
+        font-size: 10px; /* Компактный текст */
+        padding: 8px; /* Отступы для удобства чтения */
+    }
+
+    .cta-button-header {
+        width: 100%; /* Кнопка занимает всю ширину */
+        font-size: 10px; /* Размер текста на кнопке */
+        padding: 6px; /* Отступы внутри кнопки */
+    }
+
+    /* Адаптация main */
+    .main {
+        width: 100%; /* Занимает всю ширину экрана */
+        padding: 8px; /* Отступы для удобства просмотра */
+    }
+
+    .frst-kitten, .scnd-kitten, .thrd-kitten {
+        flex-direction: column; /* Элементы идут в столбик */
+        align-items: center; /* Центрируем содержимое */
+        width: 100%; /* Занимает всю доступную ширину */
+        height: auto; /* Автоматическая высота */
+        margin-bottom: 8px; /* Отступ между секциями */
+    }
+
+    .kit-image {
+        width: 100%; /* Изображение занимает всю ширину */
+        height: auto; /* Сохраняем пропорции */
+        max-height: 100px; /* Ограничиваем высоту изображения */
+        object-fit: cover; /* Обрезаем изображение, если нужно */
+    }
+
+    .text-content {
+        text-align: center; /* Центрируем текст */
+        padding: 8px; /* Отступы для удобства чтения */
+    }
+
+    .title-kittens {
+        font-size: 14px; /* Умеренный заголовок */
+        margin-bottom: 4px; /* Отступ между элементами */
+    }
+
+    .desc-kittens {
+        font-size: 10px; /* Компактный текст */
+        margin-bottom: 4px; /* Отступ между элементами */
+    }
+
+    .link-kittens {
+        font-size: 10px; /* Размер ссылки */
+    }
+
+    .cta-button-main {
+        width: 100%; /* Кнопка занимает всю ширину */
+        font-size: 10px; /* Размер текста на кнопке */
+        padding: 6px; /* Отступы внутри кнопки */
+    }
+
+    /* Адаптация footer */
+    .footer {
+        padding: 8px; /* Отступы для удобства просмотра */
+    }
+
+    .icons {
+        gap: 4px; /* Расстояние между иконками */
+        justify-content: center; /* Центрируем иконки */
+    }
+
+    .url p {
+        font-size: 10px; /* Компактный текст */
+        text-align: center; /* Центрируем текст */
+    }
+
+    .copyright p {
+        font-size: 8px; /* Маленький текст */
+        text-align: center; /* Центрируем текст */
+    }
+
+    .watermark img {
+        width: 30px; /* Логотип среднего размера */
+        height: auto; /* Сохраняем пропорции */
+        margin: 8px auto; /* Центрируем логотип */
+        display: block; /* Делаем изображение блочным элементом */
+    }
+}
