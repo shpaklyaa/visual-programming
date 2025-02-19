@@ -1,0 +1,11 @@
+{
+  "name": "package",
+  "version": "1.0.0",
+  "description": "Визуальное программирование и человеко-машинное взаимодействие | СибГУТИ | 4 семестр",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "shpatell",
+  "license": "ISC"
+}
