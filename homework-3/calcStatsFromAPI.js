@@ -1,14 +1,9 @@
-const { loadData } = require('./loadData');
-const { calcStats } = require('./calcStats');
+const calcStats = require('./calcStats');
+const loadData = require('./loadData');
 
 async function calcStatsFromAPI() {
-    try {
-        const catsInfo = await loadData();
-        return calcStats(catsInfo);
-    } catch (error) {
-        console.error('Error fetching or processing data:', error);
-        throw error;
-    }
+    const catsInfo = await loadData();
+    return calcStats(catsInfo);
 }
 
-module.exports = { calcStatsFromAPI };
+module.exports = calcStatsFromAPI;

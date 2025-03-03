@@ -1,0 +1,17 @@
+{
+    "name": "package",
+    "version": "1.0.0",
+    "description": "Визуальное программирование и человеко-машинное взаимодействие | СибГУТИ | 4 семестр",
+    "type": "module",
+    "scripts": {
+        "test": "jest"
+    },
+    "author": "shpatell",
+    "license": "ISC",
+    "devDependencies": {
+        "jest": "^29.7.0"
+    },
+    "dependencies": {
+        "node-fetch": "^3.3.2"
+    }
+}

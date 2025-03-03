@@ -1,25 +1,13 @@
-import fetch from 'node-fetch';
-global.fetch = fetch;
-
 async function loadData() {
-    const allCats = [];
-    let page = 1;
-    let hasMoreData = true;
-
-    while (hasMoreData) {
-        const response = await fetch(`https://catfact.ninja/breeds?page=${page}`);
-        if (!response.ok) {
-            throw new Error(`Failed to fetch data: ${response.status}`);
-        }
+    let url = 'https://catfact.ninja/breeds';
+    let allData = [];
+    while(url) {
+        const response = await fetch(url);
         const data = await response.json();
-        allCats.push(...data.data);
-        if (data.data.length === 0 || !data.next) {
-            hasMoreData = false;
-        }
-        page++;
+        allData = allData.concat(data.data);
+        url = data.next_page_url;
     }
-
-    return allCats;
+    return allData;
 }
 
-module.exports = { loadData };
+module.exports = loadData;

@@ -1,12 +1,13 @@
 function calcStats(catsInfo) {
-    const stats = {};
-
-    catsInfo.forEach(cat => {
-        const country = cat.country || 'Unknown';
-        stats[country] = (stats[country] || 0) + 1;
-    });
-
+    let stats = {};
+    for(let cat of catsInfo) {
+        if(stats[cat.country]) {
+            stats[cat.country]++;
+        } else {
+            stats[cat.country] = 1;
+        }
+    }
     return stats;
 }
 
-module.exports = { calcStats };
+module.exports = calcStats;
