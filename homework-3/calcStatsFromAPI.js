@@ -1,9 +1,10 @@
-const calcStats = require('./calcStats');
-const loadData = require('./loadData');
+const loadData = require('./loadData.js')
+const calcStats = require('./calcStats.js')
 
-async function calcStatsFromAPI() {
-    const catsInfo = await loadData();
-    return calcStats(catsInfo);
+async function calcStatsFromAPI(){
+    const breeds = await loadData.loadData();
+    const stats = calcStats(breeds);
+    return stats;
 }
 
-module.exports = calcStatsFromAPI;
+module.exports.calcStatsFromAPI = calcStatsFromAPI;
