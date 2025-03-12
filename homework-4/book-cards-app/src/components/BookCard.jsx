@@ -16,7 +16,6 @@ const BookCard = ({ title, authors, coverImage }) => {
         verticalAlign: "top",
       }}
     >
-      {/* Обложка книги */}
       {coverImage ? (
         <img
           src={coverImage}
@@ -45,10 +44,8 @@ const BookCard = ({ title, authors, coverImage }) => {
         </div>
       )}
 
-      {/* Название книги */}
       <h3 style={{ marginTop: "10px", fontSize: "18px" }}>{title}</h3>
 
-      {/* Авторы книги */}
       <p style={{ fontSize: "14px", color: "#666" }}>
         {authors.join(", ")}
       </p>
