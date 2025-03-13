@@ -1,12 +1,21 @@
 import React from "react";
+import "./SearchAndSort.css";
 
-const SearchAndSort = ({ onSearch, onSortChange }) => {
+const SearchAndSort = ({
+  onSearch,
+  onSortChange,
+  onToggleSortDirection,
+}) => {
   const handleSearchChange = (event) => {
     onSearch(event.target.value);
   };
 
   const handleSortChange = (event) => {
-    onSortChange(event.target.value);
+    onSortChange(event.target.value); // Передаем выбранный параметр сортировки
+  };
+
+  const handleSortDirectionToggle = () => {
+    onToggleSortDirection(); // Переключаем направление сортировки
   };
 
   return (
@@ -30,7 +39,7 @@ const SearchAndSort = ({ onSearch, onSortChange }) => {
         }}
       />
 
-      {/* Сортировка */}
+      {/* Выбор параметра сортировки */}
       <select
         onChange={handleSortChange}
         style={{
@@ -39,11 +48,25 @@ const SearchAndSort = ({ onSearch, onSortChange }) => {
           borderRadius: "4px",
         }}
       >
-        <option value="title-asc">Сортировать по названию (A-Z)</option>
-        <option value="title-desc">Сортировать по названию (Z-A)</option>
-        <option value="author-asc">Сортировать по автору (A-Z)</option>
-        <option value="author-desc">Сортировать по автору (Z-A)</option>
+        <option value="title">Сортировать по названию</option>
+        <option value="author">Сортировать по автору</option>
       </select>
+
+      {/* Кнопка переключения направления сортировки */}
+      <button
+        onClick={handleSortDirectionToggle}
+        style={{
+          padding: "10px",
+          fontSize: "16px",
+          borderRadius: "4px",
+          backgroundColor: "#007BFF",
+          color: "#fff",
+          border: "none",
+          cursor: "pointer",
+        }}
+      >
+        Переключить сортировку
+      </button>
     </div>
   );
 };

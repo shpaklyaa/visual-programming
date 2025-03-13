@@ -3,12 +3,14 @@
 import React, { useState, useEffect } from "react";
 import BookCard from "./components/BookCard";
 import SearchAndSort from "./components/SearchAndSort";
+import "./App.css";
 
 const App = () => {
   const [books, setBooks] = useState([]);
   const [filteredBooks, setFilteredBooks] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-  const [sortOption, setSortOption] = useState("title-asc");
+  const [sortField, setSortField] = useState("title"); // Параметр сортировки (title или author)
+  const [sortDirection, setSortDirection] = useState("asc"); // Направление сортировки (asc или desc)
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -73,34 +75,20 @@ const App = () => {
 
   // Фильтрация книг по строке поиска
   useEffect(() => {
-    console.log("Текущие книги:", books);
-    console.log("Строка поиска:", searchQuery);
-
     const filtered = books.filter((book) => {
-      console.log("Проверяем книгу:", book);
-
-      // Проверяем совпадение в названии книги
       const titleMatch = typeof book.title === "string" &&
         book.title.toLowerCase().includes(searchQuery.toLowerCase());
 
-      // Проверяем совпадение в авторах
       let authorMatch = false;
 
-      if (book.authors) {
-        if (Array.isArray(book.authors) && book.authors.length > 0) {
-          authorMatch = book.authors.some((author) =>
-            typeof author === "string" &&
-            author.toLowerCase().includes(searchQuery.toLowerCase())
-          );
-        } else if (typeof book.authors === "string") {
-          authorMatch = book.authors.toLowerCase().includes(searchQuery.toLowerCase());
-        }
+      if (Array.isArray(book.authors)) {
+        authorMatch = book.authors.some((author) =>
+          typeof author === "string" &&
+          author.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+      } else if (typeof book.authors === "string") {
+        authorMatch = book.authors.toLowerCase().includes(searchQuery.toLowerCase());
       }
-
-      console.log(
-        `Книга "${book.title}" подходит по поиску:`,
-        titleMatch || authorMatch
-      );
 
       return titleMatch || authorMatch;
     });
@@ -112,22 +100,24 @@ const App = () => {
   useEffect(() => {
     const sortedBooks = [...filteredBooks];
 
-    if (sortOption === "title-asc") {
-      sortedBooks.sort((a, b) => a.title.localeCompare(b.title));
-    } else if (sortOption === "title-desc") {
-      sortedBooks.sort((a, b) => b.title.localeCompare(a.title));
-    } else if (sortOption === "author-asc") {
+    if (sortField === "title") {
       sortedBooks.sort((a, b) =>
-        (a.authors?.[0] || "").localeCompare(b.authors?.[0] || "")
+        a.title.localeCompare(b.title) * (sortDirection === "asc" ? 1 : -1)
       );
-    } else if (sortOption === "author-desc") {
+    } else if (sortField === "author") {
       sortedBooks.sort((a, b) =>
-        (b.authors?.[0] || "").localeCompare(a.authors?.[0] || "")
+        (a.authors?.[0] || "").localeCompare(b.authors?.[0] || "") *
+        (sortDirection === "asc" ? 1 : -1)
       );
     }
 
     setFilteredBooks(sortedBooks);
-  }, [filteredBooks, sortOption]);
+  }, [filteredBooks, sortField, sortDirection]);
+
+  // Переключение направления сортировки
+  const toggleSortDirection = () => {
+    setSortDirection((prevDirection) => (prevDirection === "asc" ? "desc" : "asc"));
+  };
 
   if (loading) {
     return <div>Loading...</div>;
@@ -142,7 +132,8 @@ const App = () => {
       {/* Компонент поиска и сортировки */}
       <SearchAndSort
         onSearch={setSearchQuery}
-        onSortChange={setSortOption}
+        onSortChange={setSortField} // Устанавливаем поле сортировки
+        onToggleSortDirection={toggleSortDirection} // Переключаем направление
       />
 
       {/* Отображение карточек книг */}
