@@ -1,54 +1,26 @@
-// src/components/BookCard.js
-
 import React from "react";
+import "./BookCard.css"; // Импорт стилей
 
 const BookCard = ({ title, authors, coverImage }) => {
   return (
-    <div
-      style={{
-        width: "200px",
-        margin: "10px",
-        padding: "10px",
-        border: "1px solid #ccc",
-        borderRadius: "8px",
-        display: "inline-block",
-        textAlign: "center",
-        verticalAlign: "top",
-      }}
-    >
+    <div className="book-card">
       {coverImage ? (
         <img
           src={coverImage}
           alt={title}
-          style={{ width: "150px", height: "200px", objectFit: "cover" }}
+          className="book-card-image"
           onError={(e) => {
             e.target.src =
               "https://via.placeholder.com/150x200?text=No+Cover"; // Placeholder для пропущенных изображений
           }}
         />
       ) : (
-        <div
-          style={{
-            width: "150px",
-            height: "200px",
-            backgroundColor: "#f0f0f0",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            fontSize: "16px",
-            color: "#999",
-            borderRadius: "4px",
-          }}
-        >
-          No Cover
-        </div>
+        <div className="no-cover-placeholder">No Cover</div>
       )}
 
-      <h3 style={{ marginTop: "10px", fontSize: "18px" }}>{title}</h3>
+      <h3 className="book-card-title">{title}</h3>
 
-      <p style={{ fontSize: "14px", color: "#666" }}>
-        {authors.join(", ")}
-      </p>
+      <p className="book-card-authors">{authors.join(", ")}</p>
     </div>
   );
 };

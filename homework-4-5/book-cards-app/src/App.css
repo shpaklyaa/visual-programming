@@ -1,66 +1,71 @@
 body {
-    background-color: aliceblue;
+  background: rgb(238, 174, 202);
+  background: linear-gradient(90deg, rgba(238, 174, 202, 1) 0%, rgba(175, 148, 233, 1) 100%);
 }
-.container {
-    background-color: rgb(164, 195, 223);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
-  }
-  
-  /* Карточки книг */
-  .book-card {
-    background-color: #ff0000;
-    width: 200px;
-    height: 300px; /* Фиксированная высота */
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    text-align: center;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .book-card img {
-    width: 150px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 4px;
-  }
-  
-  .book-card h3 {
-    margin-top: 10px;
-    font-size: 18px;
-    color: #333;
-  }
-  
-  .book-card p {
-    font-size: 14px;
-    color: #666;
-    margin: 5px 0 0;
-  }
-  
-  /* Загрузчик */
-  .loader {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    font-size: 24px;
-    color: #666;
-  }
-  
-  /* Сообщение об ошибке */
-  .error-message {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    font-size: 20px;
-    color: red;
-  }
 
-  
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 48px;
+  color: aliceblue;
+}
+
+/* Карточки книг */
+.book-card {
+  width: 200px;
+  height: 300px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.book-card img {
+  width: 150px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.book-card h3 {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #333;
+}
+
+.book-card p {
+  font-size: 14px;
+  color: #666;
+  margin: 5px 0 0;
+}
+
+/* Загрузчик */
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 24px;
+  color: #666;
+}
+
+/* Сообщение об ошибке */
+.error-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 20px;
+  color: red;
+}
