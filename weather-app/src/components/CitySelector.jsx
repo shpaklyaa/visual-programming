@@ -1,26 +1,40 @@
 import React, { useState } from 'react';
-import { getWeatherData } from '../services/weatherService';
+import "./CitySelector.css";
 
 const CitySelector = ({ onCitySelected }) => {
     const [city, setCity] = useState('');
 
+    // Обработчик изменения значения ввода
     const handleCityChange = (event) => {
         setCity(event.target.value);
     };
 
+    // Обработчик отправки формы
     const handleCitySubmit = async () => {
+        if (city.trim() === '') {
+            alert('Пожалуйста, введите название города.');
+            return;
+        }
+
         try {
-            const weatherData = await getWeatherData(city);
-            onCitySelected(weatherData);
+            onCitySelected(city);
         } catch (error) {
-            console.error('Error fetching weather data:', error);
+            console.error('Ошибка при выборе города:', error);
         }
     };
 
     return (
         <div>
-            <input type="text" value={city} onChange={handleCityChange} />
-            <button onClick={handleCitySubmit}>Get Weather</button>
+            <input
+                type="text"
+                value={city}
+                onChange={handleCityChange}
+                placeholder="Введите название города"
+                className="inputStyle"
+            />
+            <button onClick={handleCitySubmit} className="buttonStyle">
+                Get Weather
+            </button>
         </div>
     );
 };

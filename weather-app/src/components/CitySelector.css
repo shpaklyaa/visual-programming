@@ -1,0 +1,22 @@
+.inputStyle {
+    padding: 8px;
+    width: 300px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.buttonStyle {
+    margin-top: 8px;
+    padding: 8px 16px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.buttonStyle:hover {
+    transform: scale(1.03);
+}
