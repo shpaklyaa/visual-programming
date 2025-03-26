@@ -1,0 +1,48 @@
+.dataSetTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    margin-top: 20px;
+  }
+  
+  /* Стили для заголовков */
+  .dataSetTable thead tr {
+    background-color: #f2f2f2;
+    color: #333;
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  .dataSetTable th,
+  .dataSetTable td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+  }
+  
+  /* Стиль для выделенных строк */
+  .dataSetTable tbody tr.selected {
+    background-color: #3cff7a !important; /* Используем !important для повышения приоритета */
+  }
+  
+  /* Альтернативная окраска строк */
+  .dataSetTable tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .dataSetTable tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+  }
+  
+  /* Стиль для области выделения строки */
+  .selectableArea {
+    width: 30px;
+    text-align: center;
+    background-color: #f0f8ff;
+    border-right: 1px solid #ccc;
+  }
+  
+  /* Стиль при наведении курсора */
+  .dataSetTable tbody tr:hover {
+    background-color: #b8f9d7 !important;
+    cursor: pointer;
+  }
