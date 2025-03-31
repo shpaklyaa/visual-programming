@@ -1,27 +1,30 @@
 import React, { useState } from 'react';
-import './DataSet.css'; // Подключение стилей
+import './DataSet.css';
 
 const DataSet = ({
   headers,
   data,
+  onAdd,
+  onDelete,
+  onUpdate,
   renderHeader = (header) => header.label || header.property,
-  renderCell = ({ value }) => value,
 }) => {
   const [selectedRows, setSelectedRows] = useState([]);
+  const [editingRow, setEditingRow] = useState(null); // Индекс строки для редактирования
+  const [editedData, setEditedData] = useState({}); // Хранение изменяемых данных
+  const [newComment, setNewComment] = useState({ name: '', email: '', body: '' });
 
   // Обработчик клика по строке
   const handleRowClick = (index, event) => {
     const isCtrlPressed = event.ctrlKey;
 
     if (isCtrlPressed) {
-      // Если Ctrl зажата, добавляем/удаляем строку из множества выделенных
       setSelectedRows((prevSelected) =>
         prevSelected.includes(index)
           ? prevSelected.filter((rowIndex) => rowIndex !== index)
           : [...prevSelected, index]
       );
     } else {
-      // Если Ctrl не зажата, очищаем все выделенные строки и выделяем текущую
       setSelectedRows(isSelected(index) ? [] : [index]);
     }
   };
@@ -42,16 +45,54 @@ const DataSet = ({
     return [];
   };
 
+  // Начало редактирования строки
+  const startEditing = (rowIndex) => {
+    setEditingRow(rowIndex);
+    setEditedData({ ...data[rowIndex] });
+  };
+
+  // Отмена редактирования
+  const cancelEditing = () => {
+    setEditingRow(null);
+    setEditedData({});
+  };
+
+  // Сохранение изменений
+  const saveChanges = () => {
+    if (onUpdate && editingRow !== null) {
+      onUpdate(editedData);
+      setEditingRow(null);
+      setEditedData({});
+    }
+  };
+
+  // Обработчик отправки нового комментария
+  const handleAddComment = () => {
+    if (onAdd) {
+      onAdd(newComment);
+      setNewComment({ name: '', email: '', body: '' });
+    }
+  };
+
+  // Обработчик удаления выделенных строк
+  const handleDeleteSelected = () => {
+    if (onDelete) {
+      const selectedIds = selectedRows.map((index) => data[index].id);
+      onDelete(selectedIds);
+      setSelectedRows([]);
+    }
+  };
+
   return (
     <div>
       <table className="dataSetTable">
         <thead>
           <tr>
-            {/* Добавляем столбец для выделения */}
             <th className="selectableArea"></th>
             {getHeaders().map((header, index) => (
               <th key={index}>{renderHeader(header)}</th>
             ))}
+            <th>Действия</th>
           </tr>
         </thead>
         <tbody>
@@ -61,19 +102,72 @@ const DataSet = ({
               onClick={(event) => handleRowClick(rowIndex, event)}
               className={isSelected(rowIndex) ? 'selected' : ''}
             >
-              {/* Добавляем ячейку для выделения строки */}
               <td className="selectableArea">{isSelected(rowIndex) ? '✓' : ''}</td>
               {getHeaders().map((header, colIndex) => (
                 <td key={colIndex}>
-                  {renderCell({
-                    value: item[header.property],
-                  })}
+                  {editingRow === rowIndex ? (
+                    <input
+                      type="text"
+                      value={editedData[header.property] || ''}
+                      onChange={(e) =>
+                        setEditedData({
+                          ...editedData,
+                          [header.property]: e.target.value,
+                        })
+                      }
+                    />
+                  ) : (
+                    item[header.property]
+                  )}
                 </td>
               ))}
+              <td>
+                {editingRow === rowIndex ? (
+                  <>
+                    <button onClick={saveChanges}>Сохранить</button>
+                    <button onClick={cancelEditing}>Отмена</button>
+                  </>
+                ) : (
+                  <button onClick={() => startEditing(rowIndex)}>Редактировать</button>
+                )}
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
+
+      {/* Форма добавления нового комментария */}
+      <div className="form">
+        <input
+          type="text"
+          placeholder="Имя"
+          value={newComment.name}
+          onChange={(e) =>
+            setNewComment({ ...newComment, name: e.target.value })
+          }
+        />
+        <input
+          type="text"
+          placeholder="Email"
+          value={newComment.email}
+          onChange={(e) =>
+            setNewComment({ ...newComment, email: e.target.value })
+          }
+        />
+        <textarea
+          placeholder="Комментарий"
+          value={newComment.body}
+          onChange={(e) =>
+            setNewComment({ ...newComment, body: e.target.value })
+          }
+        />
+        <button onClick={handleAddComment}>Добавить</button>
+      </div>
+
+      {/* Кнопка удаления выделенных строк */}
+      <button onClick={handleDeleteSelected} disabled={selectedRows.length === 0}>
+        Удалить выделенные
+      </button>
     </div>
   );
 };
