@@ -1,12 +1,10 @@
 import React from 'react';
-import Accordion from './Accordion'; // Импортируем созданный компонент Accordion
+import Accordion from './Accordion';
 
 function App() {
   return (
     <div className="app">
       <h1>Accordion Example</h1>
-
-      {/* Аккордеон с фруктами */}
       <Accordion
         header={{
           icon: ['🍎', '🍌', '🍊'],
@@ -24,7 +22,6 @@ function App() {
           </div>
         )}
       >
-        {/* Содержимое аккордеона с иконками и названиями рядом */}
         <div className="fruits-list">
           <div className="fruit-item">
             <span className="fruit-icon">🍎</span>
