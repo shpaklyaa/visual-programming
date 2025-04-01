@@ -1,0 +1,26 @@
+.accordion {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.header {
+  padding: 10px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+.body {
+  padding: 10px;
+  background-color: #fff;
+}
+
+.header::after {
+  content: " ▼"; /* Закрытое состояние */
+  font-size: 16px;
+  margin-left: 5px;
+}
+
+.header.open::after {
+  content: " ▲"; /* Открытое состояние */
+}
