@@ -48,9 +48,16 @@ function App() {
 
   // Добавление нового комментария
   const handleAddComment = (newComment) => {
-    const optimisticComment = { ...newComment, id: Date.now() }; // Временный ID
+    // Находим максимальный ID в текущих данных
+    const maxId = state.comments.length > 0 ? Math.max(...state.comments.map((item) => item.id)) : 0;
+
+    // Создаем новый комментарий с уникальным ID
+    const optimisticComment = { ...newComment, id: maxId + 1 };
+
+    // Добавляем комментарий оптимистически
     dispatch({ type: 'ADD_COMMENT', payload: optimisticComment });
 
+    // Отправляем данные на сервер
     fetch('https://jsonplaceholder.typicode.com/comments', {
       method: 'POST',
       body: JSON.stringify(newComment),
@@ -65,10 +72,12 @@ function App() {
         return response.json();
       })
       .then((data) => {
-        dispatch({ type: 'UPDATE_COMMENT', payload: data });
+        // Обновляем комментарий после успешного ответа от сервера
+        dispatch({ type: 'UPDATE_COMMENT', payload: { ...data, id: optimisticComment.id } });
       })
       .catch((error) => {
         console.error(error);
+        // Удаляем оптимистический комментарий в случае ошибки
         dispatch({
           type: 'DELETE_COMMENTS',
           payload: [optimisticComment.id],
@@ -127,9 +136,9 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Таблица комментариев</h1>
+      <h1>DataApp</h1>
       {state.loading ? (
-        <p>Загрузка данных...</p>
+        <p>Loading...</p>
       ) : state.error ? (
         <p>{state.error}</p>
       ) : (

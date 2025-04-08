@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './DataSet.css';
+import "./DataSet.css";
 
 const DataSet = ({
   headers,
@@ -69,7 +69,19 @@ const DataSet = ({
   // Обработчик отправки нового комментария
   const handleAddComment = () => {
     if (onAdd) {
-      onAdd(newComment);
+      // Находим максимальный ID в текущих данных
+      const maxId = data.length > 0 ? Math.max(...data.map((item) => item.id)) : 0;
+
+      // Создаем новый комментарий с уникальным ID
+      const newCommentWithId = {
+        id: maxId + 1, // Новый ID на 1 больше максимального
+        ...newComment,
+      };
+
+      // Вызываем функцию onAdd с новым комментарием
+      onAdd(newCommentWithId);
+
+      // Очищаем форму
       setNewComment({ name: '', email: '', body: '' });
     }
   };
@@ -124,11 +136,11 @@ const DataSet = ({
               <td>
                 {editingRow === rowIndex ? (
                   <>
-                    <button onClick={saveChanges}>Сохранить</button>
-                    <button onClick={cancelEditing}>Отмена</button>
+                    <button onClick={saveChanges} className='saveChanges'>Сохранить</button>
+                    <button onClick={cancelEditing} className='cancelEditing'>Отмена</button>
                   </>
                 ) : (
-                  <button onClick={() => startEditing(rowIndex)}>Редактировать</button>
+                  <button onClick={() => startEditing(rowIndex)} className='startEditing'>Редактировать</button>
                 )}
               </td>
             </tr>
@@ -165,7 +177,7 @@ const DataSet = ({
       </div>
 
       {/* Кнопка удаления выделенных строк */}
-      <button onClick={handleDeleteSelected} disabled={selectedRows.length === 0}>
+      <button onClick={handleDeleteSelected} disabled={selectedRows.length === 0} className='handleDeleteSelected'>
         Удалить выделенные
       </button>
     </div>
