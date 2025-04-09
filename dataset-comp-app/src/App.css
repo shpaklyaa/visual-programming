@@ -1,7 +1,7 @@
 /* Фон всего приложения */
 .App {
   text-align: center;
-  background-color: rgb(255, 255, 255); /* Перламутровый белый цвет */
+  background-color: rgb(128, 172, 210); /* Перламутровый белый цвет */
   min-height: 100vh; /* Занимает всю высоту экрана */
   padding: 20px; /* Добавляем отступы */
 }
@@ -112,4 +112,55 @@
   padding: 8px; /* Отступы для заголовка */
   background-color: #f2f2f2;
   border: 1px solid #ddd;
+}
+
+.App {
+  display: flex;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: aliceblue;
+  padding: 10px;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+}
+
+.dataSetTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  margin-top: 20px;
+}
+
+.dataSetTable thead tr {
+  background-color: #f2f2f2;
+  color: #333;
+  text-align: left;
+  font-weight: bold;
+}
+
+.dataSetTable th,
+.dataSetTable td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+}
+
+.dataSetTable tbody tr.selected {
+  background-color: #ec71c5;
+}
+
+.selectableArea {
+  width: 30px;
+  text-align: center;
+  background-color: #f0f8ff;
+  border-right: 1px solid #ccc;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
 }
