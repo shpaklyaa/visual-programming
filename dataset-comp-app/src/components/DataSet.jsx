@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import "./DataSet.css";
+import FormikForm from './FormikForm';
+import './DataSet.css';
 
 const DataSet = ({
-  headers,
   data,
   onAdd,
   onDelete,
@@ -12,7 +12,6 @@ const DataSet = ({
   const [selectedRows, setSelectedRows] = useState([]);
   const [editingRow, setEditingRow] = useState(null); // Индекс строки для редактирования
   const [editedData, setEditedData] = useState({}); // Хранение изменяемых данных
-  const [newComment, setNewComment] = useState({ name: '', email: '', body: '' });
 
   // Обработчик клика по строке
   const handleRowClick = (index, event) => {
@@ -34,10 +33,6 @@ const DataSet = ({
 
   // Получение заголовков столбцов
   const getHeaders = () => {
-    if (headers && headers.length > 0) {
-      return headers;
-    }
-
     if (data && data.length > 0) {
       return Object.keys(data[0]).map((key) => ({ property: key }));
     }
@@ -60,29 +55,16 @@ const DataSet = ({
   // Сохранение изменений
   const saveChanges = () => {
     if (onUpdate && editingRow !== null) {
-      onUpdate(editedData);
+      onUpdate(editedData); // Передаем измененные данные через onUpdate
       setEditingRow(null);
       setEditedData({});
     }
   };
 
   // Обработчик отправки нового комментария
-  const handleAddComment = () => {
+  const handleAddComment = (newComment) => {
     if (onAdd) {
-      // Находим максимальный ID в текущих данных
-      const maxId = data.length > 0 ? Math.max(...data.map((item) => item.id)) : 0;
-
-      // Создаем новый комментарий с уникальным ID
-      const newCommentWithId = {
-        id: maxId + 1, // Новый ID на 1 больше максимального
-        ...newComment,
-      };
-
-      // Вызываем функцию onAdd с новым комментарием
-      onAdd(newCommentWithId);
-
-      // Очищаем форму
-      setNewComment({ name: '', email: '', body: '' });
+      onAdd(newComment);
     }
   };
 
@@ -148,33 +130,8 @@ const DataSet = ({
         </tbody>
       </table>
 
-      {/* Форма добавления нового комментария */}
-      <div className="form">
-        <input
-          type="text"
-          placeholder="Имя"
-          value={newComment.name}
-          onChange={(e) =>
-            setNewComment({ ...newComment, name: e.target.value })
-          }
-        />
-        <input
-          type="text"
-          placeholder="Email"
-          value={newComment.email}
-          onChange={(e) =>
-            setNewComment({ ...newComment, email: e.target.value })
-          }
-        />
-        <textarea
-          placeholder="Комментарий"
-          value={newComment.body}
-          onChange={(e) =>
-            setNewComment({ ...newComment, body: e.target.value })
-          }
-        />
-        <button onClick={handleAddComment}>Добавить</button>
-      </div>
+      {/* Форма добавления нового элемента */}
+      <FormikForm onAdd={handleAddComment} />
 
       {/* Кнопка удаления выделенных строк */}
       <button onClick={handleDeleteSelected} disabled={selectedRows.length === 0} className='handleDeleteSelected'>
