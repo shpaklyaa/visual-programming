@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import FormikForm from './FormikForm';
+import FormikForm from './FormikForm'; // Импорт формы
 import './DataSet.css';
 
 const DataSet = ({
+  headers,
   data,
   onAdd,
   onDelete,
   onUpdate,
-  renderHeader = (header) => header.label || header.property,
+  endpoint, // Принимаем endpoint как пропс
 }) => {
   const [selectedRows, setSelectedRows] = useState([]);
   const [editingRow, setEditingRow] = useState(null); // Индекс строки для редактирования
@@ -33,6 +34,10 @@ const DataSet = ({
 
   // Получение заголовков столбцов
   const getHeaders = () => {
+    if (headers && headers.length > 0) {
+      return headers;
+    }
+
     if (data && data.length > 0) {
       return Object.keys(data[0]).map((key) => ({ property: key }));
     }
@@ -61,10 +66,10 @@ const DataSet = ({
     }
   };
 
-  // Обработчик отправки нового комментария
-  const handleAddComment = (newComment) => {
+  // Обработчик отправки нового элемента
+  const handleAddComment = (newItem) => {
     if (onAdd) {
-      onAdd(newComment);
+      onAdd(newItem);
     }
   };
 
@@ -84,7 +89,7 @@ const DataSet = ({
           <tr>
             <th className="selectableArea"></th>
             {getHeaders().map((header, index) => (
-              <th key={index}>{renderHeader(header)}</th>
+              <th key={index}>{header.label || header.property}</th>
             ))}
             <th>Действия</th>
           </tr>
@@ -131,10 +136,10 @@ const DataSet = ({
       </table>
 
       {/* Форма добавления нового элемента */}
-      <FormikForm onAdd={handleAddComment} />
+      <FormikForm onAdd={handleAddComment} endpoint={endpoint} /> {/* Передаем endpoint */}
 
       {/* Кнопка удаления выделенных строк */}
-      <button onClick={handleDeleteSelected} disabled={selectedRows.length === 0} className='handleDeleteSelected'>
+      <button onClick={handleDeleteSelected} className='handleDeleteSelected' disabled={selectedRows.length === 0}>
         Удалить выделенные
       </button>
     </div>
