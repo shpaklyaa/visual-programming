@@ -1,52 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import DataTable from './components/DataTable'; // Импорт DataTable
-import './App.css';
+import FormComponent from './components/FormComponent';
+import PersonComponent from './components/PersonComponent';
+import "./App.css"
 
 const App = () => {
+  const [people, setPeople] = useState([]);
+
+  const handleAddPerson = (person) => {
+    setPeople([...people, person]);
+  };
+
   return (
     <Router>
       <div className="App">
-        {/* Панель навигации */}
-        <nav className="sidebar">
-          <ul>
-            <li>
-              <Link to="/posts">Posts</Link>
-            </li>
-            <li>
-              <Link to="/albums">Albums</Link>
-            </li>
-            <li>
-              <Link to="/todos">Todos</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
-            </li>
-          </ul>
+        <nav>
+          <Link to="/form">Добавить человека</Link>
+          <Link to="/list">Список людей</Link>
         </nav>
 
-        {/* Основное содержимое */}
-        <main className="content">
-          <Routes>
-            {/* Маршруты для каждой таблицы */}
-            <Route
-              path="/posts"
-              element={<DataTable endpoint="https://jsonplaceholder.typicode.com/posts" />}
-            />
-            <Route
-              path="/albums"
-              element={<DataTable endpoint="https://jsonplaceholder.typicode.com/albums" />}
-            />
-            <Route
-              path="/todos"
-              element={<DataTable endpoint="https://jsonplaceholder.typicode.com/todos" />}
-            />
-            <Route
-              path="/users"
-              element={<DataTable endpoint="https://jsonplaceholder.typicode.com/users" />}
-            />
-          </Routes>
-        </main>
+        <Routes>
+          <Route
+            path="/form"
+            element={<FormComponent onSubmit={handleAddPerson} />}
+          />
+          <Route
+            path="/list"
+            element={
+              <div>
+                {people.map((person, index) => (
+                  <PersonComponent key={index} person={person} />
+                ))}
+              </div>
+            }
+          />
+        </Routes>
       </div>
     </Router>
   );
