@@ -26,9 +26,12 @@ C:\Users\pospe\visual-programming\homework-10\CommentApi\obj\Debug\net8.0\static
 C:\Users\pospe\visual-programming\homework-10\CommentApi\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.CommentApi.props
 C:\Users\pospe\visual-programming\homework-10\CommentApi\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Users\pospe\visual-programming\homework-10\CommentApi\obj\Debug\net8.0\scopedcss\bundle\CommentApi.styles.css
-C:\Users\pospe\visual-programming\homework-10\CommentApi\obj\Debug\net8.0\CommentApi.csproj.CopyComplete
 C:\Users\pospe\visual-programming\homework-10\CommentApi\obj\Debug\net8.0\CommentApi.dll
 C:\Users\pospe\visual-programming\homework-10\CommentApi\obj\Debug\net8.0\refint\CommentApi.dll
 C:\Users\pospe\visual-programming\homework-10\CommentApi\obj\Debug\net8.0\CommentApi.pdb
 C:\Users\pospe\visual-programming\homework-10\CommentApi\obj\Debug\net8.0\CommentApi.genruntimeconfig.cache
 C:\Users\pospe\visual-programming\homework-10\CommentApi\obj\Debug\net8.0\ref\CommentApi.dll
+C:\Users\pospe\visual-programming\homework-10\CommentApi\bin\Debug\net8.0\CommentApi.staticwebassets.endpoints.json
+C:\Users\pospe\visual-programming\homework-10\CommentApi\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\pospe\visual-programming\homework-10\CommentApi\obj\Debug\net8.0\staticwebassets\msbuild.CommentApi.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\Users\pospe\visual-programming\homework-10\CommentApi\obj\Debug\net8.0\CommentApi.csproj.Up2Date
