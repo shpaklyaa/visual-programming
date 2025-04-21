@@ -55,6 +55,8 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  border: 1px solid #555; /* Серая граница */
+  border-radius: 8px;
   background-color: rgb(128, 172, 210); /* Светло-серый фон */
 }
 
@@ -66,7 +68,7 @@
   font-size: 14px;
   transition: border-color 0.3s ease;
   background-color: aliceblue; /* Немного темнее серый */
-  color: #000000; /* Белый текст */
+  color: #f2f2f2; /* Белый текст */
 }
 
 .form input:focus,
@@ -99,7 +101,7 @@
 .startEditing {
   padding: 10px 15px;
   background-color: #4b9758; /* Синий */
-  color: #fff;
+  color: #ffffff;
   border: none;
   border-radius: 4px;
   font-size: 14px;

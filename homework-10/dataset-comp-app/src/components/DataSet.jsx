@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import FormikForm from './FormikForm'; // Импорт формы
-import './DataSet.css';
+import "./DataSet.css";
 
 const DataSet = ({
   headers,
@@ -8,11 +7,12 @@ const DataSet = ({
   onAdd,
   onDelete,
   onUpdate,
-  endpoint, // Принимаем endpoint как пропс
+  renderHeader = (header) => header.label || header.property,
 }) => {
   const [selectedRows, setSelectedRows] = useState([]);
-  const [editingRow, setEditingRow] = useState(null); // Индекс строки для редактирования
-  const [editedData, setEditedData] = useState({}); // Хранение изменяемых данных
+  const [editingRow, setEditingRow] = useState(null);
+  const [editedData, setEditedData] = useState({});
+  const [newComment, setNewComment] = useState({ author: '', email: '', text: '' });
 
   // Обработчик клика по строке
   const handleRowClick = (index, event) => {
@@ -32,19 +32,6 @@ const DataSet = ({
   // Проверка, является ли строка выделенной
   const isSelected = (index) => selectedRows.includes(index);
 
-  // Получение заголовков столбцов
-  const getHeaders = () => {
-    if (headers && headers.length > 0) {
-      return headers;
-    }
-
-    if (data && data.length > 0) {
-      return Object.keys(data[0]).map((key) => ({ property: key }));
-    }
-
-    return [];
-  };
-
   // Начало редактирования строки
   const startEditing = (rowIndex) => {
     setEditingRow(rowIndex);
@@ -60,16 +47,28 @@ const DataSet = ({
   // Сохранение изменений
   const saveChanges = () => {
     if (onUpdate && editingRow !== null) {
-      onUpdate(editedData); // Передаем измененные данные через onUpdate
+      const updatedComment = {
+        id: data[editingRow].id, // ID должен быть взят из текущего комментария
+        text: editedData.text || '', // Убедитесь, что поле text присутствует
+        author: editedData.author || '', // Убедитесь, что поле author присутствует
+        email: editedData.email || '', // Убедитесь, что поле email присутствует
+      };
+      onUpdate(updatedComment);
       setEditingRow(null);
       setEditedData({});
     }
   };
 
-  // Обработчик отправки нового элемента
-  const handleAddComment = (newItem) => {
+  // Обработчик отправки нового комментария
+  const handleAddComment = () => {
     if (onAdd) {
-      onAdd(newItem);
+      const maxId = data.length > 0 ? Math.max(...data.map((item) => item.id)) : 0;
+      const newCommentWithId = {
+        id: maxId + 1,
+        ...newComment,
+      };
+      onAdd(newCommentWithId);
+      setNewComment({ author: '', email: '', text: '' });
     }
   };
 
@@ -88,8 +87,8 @@ const DataSet = ({
         <thead>
           <tr>
             <th className="selectableArea"></th>
-            {getHeaders().map((header, index) => (
-              <th key={index}>{header.label || header.property}</th>
+            {headers.map((header, index) => (
+              <th key={index}>{renderHeader(header)}</th>
             ))}
             <th>Действия</th>
           </tr>
@@ -102,7 +101,7 @@ const DataSet = ({
               className={isSelected(rowIndex) ? 'selected' : ''}
             >
               <td className="selectableArea">{isSelected(rowIndex) ? '✓' : ''}</td>
-              {getHeaders().map((header, colIndex) => (
+              {headers.map((header, colIndex) => (
                 <td key={colIndex}>
                   {editingRow === rowIndex ? (
                     <input
@@ -135,11 +134,36 @@ const DataSet = ({
         </tbody>
       </table>
 
-      {/* Форма добавления нового элемента */}
-      <FormikForm onAdd={handleAddComment} endpoint={endpoint} /> {/* Передаем endpoint */}
+      {/* Форма добавления нового комментария */}
+      <div className="form">
+        <input
+          type="text"
+          placeholder="Автор"
+          value={newComment.author}
+          onChange={(e) =>
+            setNewComment({ ...newComment, author: e.target.value })
+          }
+        />
+        <input
+          type="text"
+          placeholder="Email"
+          value={newComment.email}
+          onChange={(e) =>
+            setNewComment({ ...newComment, email: e.target.value })
+          }
+        />
+        <textarea
+          placeholder="Комментарий"
+          value={newComment.text}
+          onChange={(e) =>
+            setNewComment({ ...newComment, text: e.target.value })
+          }
+        />
+        <button onClick={handleAddComment}>Добавить</button>
+      </div>
 
       {/* Кнопка удаления выделенных строк */}
-      <button onClick={handleDeleteSelected} className='handleDeleteSelected' disabled={selectedRows.length === 0}>
+      <button onClick={handleDeleteSelected} disabled={selectedRows.length === 0} className='handleDeleteSelected'>
         Удалить выделенные
       </button>
     </div>
