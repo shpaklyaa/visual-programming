@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pospe\\visual-programming\\homework-10\\CommentApi\\CommentApi.csproj": {}
+    "C:\\Users\\pospe\\visual-programming\\homework-11\\CommentApi\\CommentApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pospe\\visual-programming\\homework-10\\CommentApi\\CommentApi.csproj": {
+    "C:\\Users\\pospe\\visual-programming\\homework-11\\CommentApi\\CommentApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pospe\\visual-programming\\homework-10\\CommentApi\\CommentApi.csproj",
+        "projectUniqueName": "C:\\Users\\pospe\\visual-programming\\homework-11\\CommentApi\\CommentApi.csproj",
         "projectName": "CommentApi",
-        "projectPath": "C:\\Users\\pospe\\visual-programming\\homework-10\\CommentApi\\CommentApi.csproj",
+        "projectPath": "C:\\Users\\pospe\\visual-programming\\homework-11\\CommentApi\\CommentApi.csproj",
         "packagesPath": "C:\\Users\\pospe\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pospe\\visual-programming\\homework-10\\CommentApi\\obj\\",
+        "outputPath": "C:\\Users\\pospe\\visual-programming\\homework-11\\CommentApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\pospe\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -47,6 +47,20 @@
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[8.0.15, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.4, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[9.0.4, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
