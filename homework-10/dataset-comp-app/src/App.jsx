@@ -135,7 +135,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>DataApp</h1>
+      <h1>Comment table</h1>
       {state.loading ? (
         <p>Loading...</p>
       ) : state.error ? (

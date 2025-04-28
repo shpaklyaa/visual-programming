@@ -55,20 +55,16 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  border: 1px solid #555; /* Серая граница */
-  border-radius: 8px;
   background-color: rgb(128, 172, 210); /* Светло-серый фон */
 }
 
 .form input,
 .form textarea {
   padding: 10px;
-  border: 1px solid #6c1414; /* Серая граница */
-  border-radius: 4px;
   font-size: 14px;
   transition: border-color 0.3s ease;
   background-color: aliceblue; /* Немного темнее серый */
-  color: #f2f2f2; /* Белый текст */
+  color: #000000; /* Белый текст */
 }
 
 .form input:focus,
