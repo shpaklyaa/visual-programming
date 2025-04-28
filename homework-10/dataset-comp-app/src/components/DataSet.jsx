@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import FormikForm from './FormikForm';
-import './DataSet.css';
+import "./DataSet.css";
 
 const DataSet = ({
+  headers,
   data,
   onAdd,
   onDelete,
@@ -60,7 +60,7 @@ const DataSet = ({
   };
 
   // Обработчик отправки нового комментария
-  const handleAddComment = (newComment) => {
+  const handleAddComment = () => {
     if (onAdd) {
       const maxId = data.length > 0 ? Math.max(...data.map((item) => item.id)) : 0;
       const newCommentWithId = {
