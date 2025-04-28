@@ -32,6 +32,18 @@ const DataSet = ({
   // Проверка, является ли строка выделенной
   const isSelected = (index) => selectedRows.includes(index);
 
+<<<<<<< HEAD:dataset-comp-app/src/components/DataSet.jsx
+  // Получение заголовков столбцов
+  const getHeaders = () => {
+    if (data && data.length > 0) {
+      return Object.keys(data[0]).map((key) => ({ property: key }));
+    }
+
+    return [];
+  };
+
+=======
+>>>>>>> homework-10:homework-10/dataset-comp-app/src/components/DataSet.jsx
   // Начало редактирования строки
   const startEditing = (rowIndex) => {
     setEditingRow(rowIndex);
@@ -47,6 +59,9 @@ const DataSet = ({
   // Сохранение изменений
   const saveChanges = () => {
     if (onUpdate && editingRow !== null) {
+<<<<<<< HEAD:dataset-comp-app/src/components/DataSet.jsx
+      onUpdate(editedData); // Передаем измененные данные через onUpdate
+=======
       const updatedComment = {
         id: data[editingRow].id, // ID должен быть взят из текущего комментария
         text: editedData.text || '', // Убедитесь, что поле text присутствует
@@ -54,6 +69,7 @@ const DataSet = ({
         email: editedData.email || '', // Убедитесь, что поле email присутствует
       };
       onUpdate(updatedComment);
+>>>>>>> homework-10:homework-10/dataset-comp-app/src/components/DataSet.jsx
       setEditingRow(null);
       setEditedData({});
     }
@@ -62,6 +78,9 @@ const DataSet = ({
   // Обработчик отправки нового комментария
   const handleAddComment = (newComment) => {
     if (onAdd) {
+<<<<<<< HEAD:dataset-comp-app/src/components/DataSet.jsx
+      onAdd(newComment);
+=======
       const maxId = data.length > 0 ? Math.max(...data.map((item) => item.id)) : 0;
       const newCommentWithId = {
         id: maxId + 1,
@@ -69,6 +88,7 @@ const DataSet = ({
       };
       onAdd(newCommentWithId);
       setNewComment({ author: '', email: '', text: '' });
+>>>>>>> homework-10:homework-10/dataset-comp-app/src/components/DataSet.jsx
     }
   };
 
@@ -134,6 +154,10 @@ const DataSet = ({
         </tbody>
       </table>
 
+<<<<<<< HEAD:dataset-comp-app/src/components/DataSet.jsx
+      {/* Форма добавления нового элемента */}
+      <FormikForm onAdd={handleAddComment} />
+=======
       {/* Форма добавления нового комментария */}
       <div className="form">
         <input
@@ -161,6 +185,7 @@ const DataSet = ({
         />
         <button onClick={handleAddComment}>Добавить</button>
       </div>
+>>>>>>> homework-10:homework-10/dataset-comp-app/src/components/DataSet.jsx
 
       {/* Кнопка удаления выделенных строк */}
       <button onClick={handleDeleteSelected} disabled={selectedRows.length === 0} className='handleDeleteSelected'>
